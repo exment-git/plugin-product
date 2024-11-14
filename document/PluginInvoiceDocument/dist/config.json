@@ -1,0 +1,14 @@
+{
+    "plugin_name": "PluginInvoiceDocument",
+    "uuid": "1ee97c20-4408-11ef-bac3-0800200c9a66",
+    "plugin_view_name": "Plugin Demo Document",
+    "description": "請求書を出力してファイル列に保存します。",
+    "author":  "Kajitori",
+    "version": "1.0.0",
+    "plugin_type": "document",
+    "target_tables": "send_invoice",
+    "filename": "請求書_${ymdhms}",
+    "label": "請求書出力",
+    "icon": "fa-files-o",
+    "button_class": "btn-success"
+}
