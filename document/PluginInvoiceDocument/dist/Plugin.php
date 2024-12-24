@@ -39,13 +39,13 @@ class Plugin extends PluginDocumentBase
 				$pathinfo = pathinfo($path);
 				$unique_filename = str_replace($pathinfo['extension'], 'pdf', $pathinfo['basename']);
 				$filename = str_replace($pathinfo['extension'], 'pdf', $file->filename);
-				Storage::disk(config('admin.upload.disk'))->put('invoice/' . $unique_filename, $response->body());
+				Storage::disk(config('admin.upload.disk'))->put('send_invoice/' . $unique_filename, $response->body());
 				$exment_file = ExmentFile::saveFileInfo(FileType::CUSTOM_VALUE_COLUMN, $custom_table_name , [
 					'unique_filename' => $unique_filename,
 					'filename' => $filename,
 				]);
-				$exment_file->saveCustomValueAndColumn($this->custom_value->id, 'invoice', $this->custom_table, true);
-				$this->custom_value->setValue('invoice', path_join($exment_file->local_dirname, $exment_file->local_filename));
+				$exment_file->saveCustomValueAndColumn($this->custom_value->id, 'send_invoice', $this->custom_table, true);
+				$this->custom_value->setValue('send_invoice', path_join($exment_file->local_dirname, $exment_file->local_filename));
 				$this->custom_value->save();
 				$this->is_success = true;
 			}
